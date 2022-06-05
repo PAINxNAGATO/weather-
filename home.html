@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <title>Weather App</title>
+</head>
+<body>
+  <div class="box">
+    <div class="wave -one"></div>
+    <div class="wave -two"></div>
+    <div class="wave -three"></div>
+
+    <div id="weathercon"><i class="fa-solid fa-sun" style = "color:#eccc68"></i></div>
+
+    <div class="info">
+    <h2 class="location"><i class="fa-solid fa-street-view"></i>{%city%}, {%country%}</h2>
+    <p id="date">MON | MAY 30 | 3:42 PM</p>
+    <h1 class="temp">{%tempVal%}°C</h1>
+    <h3 class = "tempmin_max">MIN {%tempMin%}°C| MAX {%tempMax%}°C</h3>
+    </div>
+    </div>
+    <script>
+      const curDate = document.getElementById('date');
+      let con = document.getElementById('weathercon');
+
+      const getcurDate = ()=>{
+        const weekdays = new Array(7);
+        weekdays[0] = 'Sunday';
+        weekdays[1] = 'Monday';
+        weekdays[2] = 'Tuesday';
+        weekdays[3] = 'Wednesday';
+        weekdays[4] = 'Thursday';
+        weekdays[5] = 'Friday';
+        weekdays[6] = 'Saturday';
+
+        const months = [
+          'Jan',
+          'feb',
+          'Mar',
+          'Apr',
+          'May',
+          'June',
+          'July',
+          'Aug',
+          'Sept',
+          'Oct',
+          'Nov',
+          'Dec'
+        ]
+        const currentTime = new Date();
+        var day = currentTime.getDay();
+        var month = currentTime.getMonth();
+        // var year = currentTime.getFullYear();
+        var date = currentTime.getDate();
+        // console.log(months[month]);
+        // console.log(months[month+1]);
+
+        var hour = currentTime.getHours();
+        var min = currentTime.getMinutes();
+
+        let period = 'AM';
+        
+        if(hour > 11){
+          period = 'PM';
+        if(hour > 12)
+          hour -= 12;
+        }
+        if(min < 10)
+        min = "0" + min;
+
+        return `${weekdays[day]} | ${months[month]} ${date} | ${hour}:${min} ${period}`;
+      }
+      
+      curDate.innerHTML = getcurDate();
+    </script>
+</body>
+</html>

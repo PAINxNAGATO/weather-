@@ -1,1 +1,1 @@
-https://api.openweathermap.org/data/2.5/weather?q=Pune&appid=d4521a823f2019276eb54439da75dbaf
+https://api.openweathermap.org/data/2.5/weather?q=Delhi&appid=d4521a823f2019276eb54439da75dbaf
